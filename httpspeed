@@ -1,0 +1,10 @@
+#!/bin/sh
+URL=http://mirror.yandex.ru/debian/dists/jessie/main/Contents-amd64.gz
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin
+start=`date +%s` 
+count=`wget -O- $URL| wc -c` 
+end=`date +%s`
+let total=end-start
+let speed=count/total/128
+echo ${speed} kib/s
